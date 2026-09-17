@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>포트폴리오 - 최종환</title>
+    <style>
+        :root {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --accent-color: #38bdf8;
+            --text-color: #f8fafc;
+            --text-secondary: #94a3b8;
+            --border-color: #334155;
+            --tag-bg: #0369a1;
+            --tag-text: #e0f2fe;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, Roboto, 'Helvetica Neue', 'Segoe UI', 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            padding: 2rem 1rem;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        header {
+            background: var(--card-bg);
+            border-radius: 1rem;
+            padding: 2.5rem;
+            margin-bottom: 2rem;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: #ffffff;
+            letter-spacing: -0.025em;
+        }
+
+        .subtitle {
+            font-size: 1.25rem;
+            color: var(--accent-color);
+            margin-bottom: 1.5rem;
+            font-weight: 500;
+        }
+
+        .contact-info {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        .contact-info a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .contact-info a:hover {
+            color: var(--accent-color);
+        }
+
+        section {
+            background: var(--card-bg);
+            border-radius: 1rem;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.2);
+        }
+
+        h2 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #ffffff;
+            border-bottom: 2px solid var(--accent-color);
+            padding-bottom: 0.5rem;
+            margin-bottom: 1.5rem;
+            display: inline-block;
+        }
+
+        .timeline-item {
+            position: relative;
+            padding-left: 1.5rem;
+            margin-bottom: 1.5rem;
+            border-left: 2px solid var(--border-color);
+        }
+
+        .timeline-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -5px;
+            top: 6px;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background-color: var(--accent-color);
+        }
+
+        .date {
+            font-size: 0.875rem;
+            color: var(--accent-color);
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+
+        .institution {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #ffffff;
+        }
+
+        .major {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        .empty-text {
+            color: var(--text-secondary);
+            font-style: italic;
+        }
+
+        .project-card {
+            background: rgba(15, 23, 42, 0.5);
+            border: 1px solid var(--border-color);
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .project-card:last-child {
+            margin-bottom: 0;
+        }
+
+        .project-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .project-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #ffffff;
+        }
+
+        .project-date {
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+            background: var(--bg-color);
+            padding: 0.2rem 0.6rem;
+            border-radius: 0.375rem;
+            border: 1px solid var(--border-color);
+        }
+
+        .project-meta {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+        }
+
+        .meta-item {
+            color: var(--text-secondary);
+        }
+
+        .meta-item span {
+            color: var(--text-color);
+            font-weight: 500;
+        }
+
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .tag {
+            background-color: rgba(56, 189, 248, 0.1);
+            color: var(--accent-color);
+            border: 1px solid rgba(56, 189, 248, 0.3);
+            font-size: 0.8rem;
+            padding: 0.25rem 0.6rem;
+            border-radius: 0.375rem;
+            font-weight: 500;
+        }
+
+        .project-tasks {
+            list-style-type: none;
+        }
+
+        .project-tasks li {
+            position: relative;
+            padding-left: 1.25rem;
+            color: var(--text-secondary);
+            margin-bottom: 0.375rem;
+            font-size: 0.95rem;
+        }
+
+        .project-tasks li::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: var(--accent-color);
+            font-weight: bold;
+        }
+
+        @media (max-width: 600px) {
+            body {
+                padding: 1rem 0.5rem;
+            }
+            header, section {
+                padding: 1.5rem;
+            }
+            h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- Header -->
+        <header>
+            <h1>최종환</h1>
+            <div class="subtitle">"벽 뒤에 숨은 버그를 찾아내는 탐색자"</div>
+            <div class="contact-info">
+                <span>📧 이메일:</span>
+                <a href="mailto:jini69092@naver.com">jini69092@naver.com</a>
+            </div>
+        </header>
+
+        <!-- Academic Background -->
+        <section>
+            <h2>학력</h2>
+            
+            <div class="timeline-item">
+                <div class="date">2024.03 ~ 현재</div>
+                <div class="institution">유한대학교</div>
+                <div class="major">컴퓨터소프트웨어공학 / 게임콘텐츠전공</div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="date">2021.03 ~ 2024.01</div>
+                <div class="institution">부천공업고등학교</div>
+                <div class="major">IT전자통신과</div>
+            </div>
+        </section>
+
+        <!-- Work Experience -->
+        <section>
+            <h2>경력</h2>
+            <p class="empty-text">작성 필요</p>
+        </section>
+
+        <!-- Project Experience -->
+        <section>
+            <h2>프로젝트 경험</h2>
+
+            <!-- Project 1 -->
+            <div class="project-card">
+                <div class="project-header">
+                    <div class="project-title">쥐독한 등반</div>
+                    <div class="project-date">2026.03 ~ 2026.07</div>
+                </div>
+                <div class="project-meta">
+                    <div class="meta-item">구분: <span>기타</span></div>
+                    <div class="meta-item">역할: <span>2D 도트 그래픽</span></div>
+                </div>
+                <div class="tech-stack">
+                    <span class="tag">Aseprite</span>
+                    <span class="tag">Photoshop</span>
+                </div>
+                <ul class="project-tasks">
+                    <li>캐릭터 디자인 및 모션 디자인</li>
+                    <li>고양이 손 등 함정 오브젝트 디자인</li>
+                    <li>배경 오브젝트 디자인</li>
+                </ul>
+            </div>
+
+            <!-- Project 2 -->
+            <div class="project-card">
+                <div class="project-header">
+                    <div class="project-title">Pill Agents</div>
+                    <div class="project-date">2026.08 ~ 현재</div>
+                </div>
+                <div class="project-meta">
+                    <div class="meta-item">구분: <span>기타</span></div>
+                    <div class="meta-item">역할: <span>3D 그래픽</span></div>
+                </div>
+                <div class="tech-stack">
+                    <span class="tag">Blender</span>
+                    <span class="tag">Photoshop</span>
+                </div>
+                <ul class="project-tasks">
+                    <li>배경 맵, 오브젝트 디자인</li>
+                    <li>도구 업그레이드 디자인</li>
+                </ul>
+            </div>
+        </section>
+    </div>
+
+</body>
+</html>
